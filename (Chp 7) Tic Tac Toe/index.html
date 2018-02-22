@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <title>Tic Tac Toe - Game 2</title>
+
+
+    <style>
+        body{
+            background: #000;
+        }
+
+        #app {
+            box-sizing: border-box;
+            background:  brown;
+            width: 600px;
+            margin: 50px auto;
+            border: solid 10px gray;
+            text-align: center;
+        }
+
+        table {     
+            box-shadow: 0px 5px 80px #000;
+            margin: 50px auto;
+            table-layout: fixed;
+            width: 300px;
+            height: 300px;
+            border-collapse: collapse;
+            border: 9px solid red;
+            font-family: "Arial Black", Gadget, sans-serif;
+            cursor: pointer;
+            font-size: 4em;
+             background: gold;
+      
+        }
+
+        td {
+            border: 2px dashed red;
+            text-align: center;
+        }
+
+        p {
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 3em;
+            color: white;
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div id="app">
+
+
+    
+        <table id="table">
+            <tr>
+                <td id=1>&nbsp;</td>
+                <td id=2>&nbsp;</td>
+                <td id=3>&nbsp;</td>
+            </tr>
+            <tr>
+                <td id=4>&nbsp;</td>
+                <td id=5>&nbsp;</td>
+                <td id=6>&nbsp;</td>
+            </tr>
+            <tr>
+                <td id=7>&nbsp;</td>
+                <td id=8>&nbsp;</td>
+                <td id=9>&nbsp;</td>
+            </tr>
+        </table>
+
+        <p id="turn">Turn: X</p>
+
+
+    </div>
+
+    <script>
+   
+        var x = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ]
+
+        var turn = false;
+        var clickCounter = 0;
+        var gameOver = false;
+
+        var myTable = document.getElementById("table");
+        for (var row = 0; row < myTable.rows.length; row++) {
+            for (var col = 0; col < myTable.rows[row].cells.length; col++) {
+                myTable.rows[row].cells[col].onclick = function() {
+                    setCellValue(this)
+                };
+            }
+        }
+
+        function setCellValue(cell) {
+            if (gameOver) {
+                return;
+            }
+            if (cell.textContent.charCodeAt() == 160) {
+                if (!turn) { 
+                    cell.textContent = "X";
+                    document.getElementById("turn").textContent = "Turn: O";
+                } else {
+                    cell.textContent = "O"
+                    document.getElementById("turn").textContent = "Turn: X";
+                }
+                turn = !turn;
+                clickCounter++;
+                fillArray(cell.id);
+            }
+        }
+
+  
+        function fillArray(cellId) {
+            if (turn == 0)
+                x[cellId - 1] = 1;
+            else {
+                x[cellId - 1] = 10;
+            }
+            var score = updateScore();
+            if (score != "") {
+                document.getElementById("turn").textContent = score;
+                gameOver = true;
+            } else if (clickCounter >= 9) {
+                document.getElementById("turn").textContent = "Cat's Tail";
+                gameOver = true;
+            }
+        }
+
+        function updateScore() {
+            var t = "";
+
+
+            if (x[0] + x[1] + x[2] == 3)
+                t = "O Es el Ganador!";
+            if (x[0] + x[1] + x[2] == 30)
+                t = "X Es el Ganador!"
+            if (x[3] + x[4] + x[5] == 3)
+                t = "O Es el Ganador!"
+            if (x[3] + x[4] + x[5] == 30)
+                t = "X Es el Ganador!"
+            if (x[6] + x[7] + x[8] == 3)
+                t = "O Es el Ganador!"
+            if (x[6] + x[7] + x[8] == 30)
+                t = "X Es el Ganador!"
+
+            // Es el Ganador by columna
+            if (x[0] + x[3] + x[6] == 3)
+                t = "O Es el Ganador!";
+            if (x[0] + x[3] + x[6] == 30)
+                t = "X Es el Ganador!"
+            if (x[1] + x[4] + x[7] == 3)
+                t = "O Es el Ganador!"
+            if (x[1] + x[4] + x[7] == 30)
+                t = "X Es el Ganador!"
+            if (x[2] + x[5] + x[8] == 3)
+                t = "O Es el Ganador!"
+            if (x[2] + x[5] + x[8] == 30)
+                t = "X Es el Ganador!"
+
+            // Es el Ganador by diagonal
+            if (x[0] + x[4] + x[8] == 3)
+                t = "O Es el Ganador!";
+            if (x[0] + x[4] + x[8] == 30)
+                t = "X Es el Ganador!"
+            if (x[2] + x[4] + x[6] == 3)
+                t = "O Es el Ganador!"
+            if (x[2] + x[4] + x[6] == 30)
+                t = "X Es el Ganador!"
+
+            return t;
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <style>
+        body {
+            background-color: green;
+            color: white;
+            font-size: 1.6em;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #app {
+            background: black;
+            padding: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: solid 5px lightgray;
+            box-shadow: 0 10px 50px #000
+        }
+
+        #guess {
+            border: 1px solid red;
+            width: 30px;
+            text-align: center;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <p id="message">Im Thinking of a Number from 1 to 10, <br>Can you guess the Number?</p>
+        <input type="text" id="guess" value="">
+        <input type="button" value="Guess Now" onclick="numberGuess()">
+    </div>
+
+    <script>
+        
+        var randomNumber = Math.floor((Math.random() * 10) + 1);
+        console.log(randomNumber);
+
+        function numberGuess() {
+
+            var yourGuess = document.getElementById('guess');
+            var message = document.getElementById('message');
+
+            if (yourGuess == randomNumber) {
+                message.innerHTML = "You are Correct!";
+            } else {
+                message.innerHTML = "You are Incorrect! The correct # was " + randomNumber;
+            }
+
+
+        }
+    </script>
+
+
+
+</body>
+</html>
