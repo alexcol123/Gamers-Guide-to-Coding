@@ -26,6 +26,7 @@
             text-align: center;
 
         }
+
     </style>
 
 </head>
@@ -38,13 +39,12 @@
     </div>
 
     <script>
-        
-        var randomNumber = Math.floor((Math.random() * 10) + 1);
-        console.log(randomNumber);
+    
 
         function numberGuess() {
+    var randomNumber = Math.floor((Math.random() * 10) + 1);
 
-            var yourGuess = document.getElementById('guess');
+            var yourGuess = document.getElementById('guess').value;
             var message = document.getElementById('message');
 
             if (yourGuess == randomNumber) {
@@ -52,12 +52,14 @@
             } else {
                 message.innerHTML = "You are Incorrect! The correct # was " + randomNumber;
             }
-
-
+            console.log(yourGuess + "my Guess ");
+            console.log(randomNumber)
         }
+
     </script>
 
 
 
 </body>
+
 </html>
