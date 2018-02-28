@@ -1,0 +1,221 @@
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        body {
+            background: beige;
+            padding-top: 5%;
+            /* background:  url(images/underpants1.png)center center no-repeat;*/
+            background-size: cover padding: 20px;
+            text-align: center;
+            border: solid 25px goldenrod;
+        }
+
+        #image {
+            background: url('images/underpants2.png')top center no-repeat;
+            min-height: 100%;
+        }
+
+
+
+        #next {
+            margin: 5%;
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.7rem;
+            background: blue;
+            box-shadow: 2px 5px 15px #000;
+        }
+
+        #next:hover {
+            background: darkblue;
+
+        }
+
+
+
+
+
+        #dKnow {
+            color: white;
+            margin: 5%;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.7rem;
+            background: red;
+            box-shadow: 2px 5px 15px #000;
+        }
+
+        #dKnow:hover {
+            background: darkred;
+
+        }
+
+
+
+
+
+
+        #playAgain {
+
+            margin: 5%;
+            font-weight: bold;
+            font-size: 1.7rem;
+            background: lightGreen;
+            box-shadow: 2px 5px 15px #000;
+            visibility: hidden;
+            opacity: .6;
+            border: solid 3px black;
+        }
+
+        #playAgain:hover {
+            background: darkGreen;
+            color: aliceblue;
+
+        }
+
+
+
+        #app {
+            border: double 7px red;
+            background: white;
+            color: red;
+            font-weight: bold;
+            margin: auto;
+            width: 70%;
+        }
+
+        #output {
+            padding: 5%;
+            font-size: 4.4rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <div id="output">Start Game</div>
+
+    </div>
+
+
+    <div id="image">
+
+        <div id="buttons">
+
+
+            <input type="button" id="dKnow" onClick="iDontkK()" value="I Don't Know It !">
+
+            <input type="button" id="next" onClick="palabras()" value="Next Word  -->">
+
+
+        </div>
+        <input type="button" id="playAgain" onClick="document.location.reload(true)" value="Play Again!">
+
+
+
+
+
+
+
+
+        <script>
+            var words = [
+                'Went',
+                'Out',
+                'Come',
+                'From',
+                'Have',
+                'Will',
+                'They',
+                'Where',
+                'Said',
+                'When',
+                'Happy',
+                'Play',
+                'Fun',
+                'They',
+                'Are',
+                'Do',
+                'Little',
+                'At',
+                'Brown',
+                'Green',
+                'You',
+                'And',
+                'Not',
+                'Down',
+                'Your'
+            ];
+
+
+
+            var newList = [];
+            var next = document.getElementById('next');
+            var dKnow = document.getElementById('dKnow');
+            var playAgain = document.getElementById('playAgain');
+            var image = document.getElementById('image');
+
+            var output = document.getElementById('output');
+            var counter = 0;
+
+            for (var x = 0; x < words.length; x++) {
+                newList.push(words[x]);
+                console.log(newList + " this is the New List");
+            }
+
+
+            function palabras() {
+
+                output.innerHTML = newList[counter];
+                console.log(counter);
+                console.log(newList.length);
+
+                if (counter == newList.length) {
+                    output.innerHTML = "Ethan Wins !!<br> Hurray";
+                    next.style.visibility = " hidden";
+                    dKnow.style.visibility = " hidden";
+                    playAgain.style.visibility = " visible";
+                    playAgain.style.fontSize = "3rem";
+                    playAgain.style.padding = "2%";
+
+                    image.style.background = "url('images/underpants1.png') top center no-repeat ";
+
+
+                } else {
+                    counter++;
+                    return counter;
+                }
+
+            }
+
+
+            function iDontkK() {
+                newList.push(newList[counter - 1]);
+                console.log(newList);
+                palabras();
+
+
+            }
+
+
+            function playAgain() {
+                document.location.reload(true);
+            }
+
+        </script>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
